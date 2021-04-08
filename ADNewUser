@@ -1,0 +1,11 @@
+# Ceci est un script ayant pour but de créer des utilisateurs Active Directory à partir des informations qui lui seront données.
+# Le script peut prendre les informations en ligne de commande, ou de manière interactive.
+# version 0.1
+# Auteur : Corentin Blondiau
+
+#Force le type d'execution
+Set-executionpolicy Unrestricted
+
+# Importe le module AD
+Import-Module ActiveDirectory
+
