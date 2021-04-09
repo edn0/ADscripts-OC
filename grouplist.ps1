@@ -4,5 +4,4 @@
 $nom = Read-host "Entrez le nom de l'utilisateur"
 
 # Cette commande va prendre le nom donné par l'utilisateur et chercher les groupes dont il est membre
-
 dsquery user -samid $nom | dsget user -memberof | dsget group -samid > grpliste.txt
