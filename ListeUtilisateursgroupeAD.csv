@@ -1,0 +1,3 @@
+﻿#TYPE Microsoft.ActiveDirectory.Management.ADUser
+"DistinguishedName","Enabled","GivenName","MemberOf","Name","ObjectClass","ObjectGUID","SamAccountName","SID","Surname","UserPrincipalName"
+"CN=Corentin Blondiau,CN=Users,DC=acme,DC=fr","True",,"Microsoft.ActiveDirectory.Management.ADPropertyValueCollection","Corentin Blondiau","user","d2075608-3e11-4b99-95ff-f8bc0e864f2e","cblondiau","S-1-5-21-797497191-2240598046-2148337097-1113",,"cblondiau@acme.fr"

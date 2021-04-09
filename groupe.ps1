@@ -19,5 +19,3 @@ $nom = read-host "Entrez le(s) nom(s) de(s) (l')utilisateur(s) inclu(s) dans le 
 Add-ADgroupmember -identity $groupe -members $nom
 Write-host "L'utilisateur $nom fait maintenant partie du groupe $groupe"
 }
-# Cette commande va exporter la liste des utilisateurs du groupe dans un fichier CSV
-Get-ADuser $nom -properties MemberOf | Export-Csv ListeUtilisateursgroupeAD.csv -Encoding UTF8
