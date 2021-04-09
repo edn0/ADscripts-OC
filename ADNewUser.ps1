@@ -25,5 +25,8 @@ $mdp = Read-Host "Entrez le mot de passe de l'utilisateur"
 
 New-ADUser -Name $nom -SamAccountName $login -UserPrincipalName $login@acme.fr -AccountPassword (ConvertTo-SecureString -AsPlainText $mdp -Force) -PasswordNeverExpires $true -CannotChangePassword $false -Enabled $true
 
+# Confirmation de l'inscription de l'utilisateur 
+Write-Host "L'utilisateur fait desormais partie de votre domaine"
+
 # Cette commande va permettre de créer un dossier au nom de l'utilisateur dans un dossier partagé dédié
-New-Item -Path C:\Partage\$nom -ItemType Directory 
+New-Item -Path C:\Partage\$nom -ItemType Directory
