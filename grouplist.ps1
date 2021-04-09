@@ -4,4 +4,4 @@
 $nom = Read-host "Entrez le nom de l'utilisateur"
 
 # Cette commande va prendre le nom donné par l'utilisateur et chercher les groupes dont il est membre
-Get-ADuser $nom -properties memberof
+Get-ADuser $nom -properties MemberOf
