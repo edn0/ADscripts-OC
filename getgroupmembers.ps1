@@ -4,4 +4,4 @@
 $group = read-host "Entrez le nom du groupe dont vous souhaitez connaitre les utilisateurs"
 
 # Cette commande va chercher les membres du groupe donné
-Get-ADgroupmember $group > utilisateurs$group
+Get-ADgroupmember $group > utilisateurs$group.txt
