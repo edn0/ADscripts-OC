@@ -1,4 +1,4 @@
-# Ce script va permettre de créer des groupes au sein de l'AD en demandant à l'utilisateur d'entrer le nom du groupe à créer
+# Ce script va permettre de créer des groupes au sein de l'AD en demandant à l'utilisateur d'entrer le nom du groupe à créer, le nombre d'utilisateurs à ajouter et quels sont ces utilisateurs
 
 # Cette commande va permettre d'afficher la liste des utilisateurs de l'AD afin de permettre à l'utilisateur d'avoir la liste des noms d'utilisateurs sous les yeux pour faciliter le procédé
 Get-ADUser -Filter * | Select-Object name, samAccountName, UserPrincipalName
