@@ -4,4 +4,5 @@
 $nom = Read-host "Entrez le nom de l'utilisateur"
 
 # Cette commande va prendre le nom donné par l'utilisateur et chercher les groupes dont il est membre
-Get-ADuser $nom -properties MemberOf | Export-Csv ListeUtilisateursgroupeAD.csv -Encoding UTF8
+
+dsquery user -samid $nom | dsget user -memberof | dsget group -samid > grpliste.txt
