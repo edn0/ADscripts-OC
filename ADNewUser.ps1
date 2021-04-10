@@ -1,6 +1,7 @@
 # Ceci est un script ayant pour but de créer des utilisateurs Active Directory à partir des informations qui lui seront données.
 # Le script peut prendre les informations en ligne de commande, ou de manière interactive.
-# version 0.1
+# Le script va créer un utilisateur avec le prénom et nom complet, et son nom d'utilisateur sera la première lettre de son prénom suivi de son nom de famille complet.
+# version 1.0
 # Auteur : Corentin Blondiau
 
 #Force le type d'execution
@@ -30,7 +31,7 @@ New-ADUser -Name $prenom$nom -SamAccountName $login -UserPrincipalName $login@ac
 Add-ADgroupmember -identity $group -members $login
 
 # Confirmation de l'inscription de l'utilisateur
-Write-Host "L'utilisateur $login fait désormais partie de votre domaine et du groupe $group"
+Write-Host "L'utilisateur $login fait désormais partie de votre domaine et du groupe $group. Un dossier à son nom a été crée dans le dossier "Partage"."
 
 # Cette commande va permettre de créer un dossier au nom de l'utilisateur dans un dossier partagé dédié
 New-Item -Path C:\Partage\$login -ItemType Directory
