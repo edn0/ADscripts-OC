@@ -18,13 +18,19 @@ $nom = Read-Host "Entrez le nom de l'utilisateur"
 # Crée son nom d'utilisateur à partir du nom et prénom
 $login =$prenom.substring(0,1)+$nom
 
+# Demande dans quel groupe l'utilisateur doit être inséré
+$group = read-host "Dans quel groupe souhaitez vous insérer le nouvel utilisateur ?"
+
 # Cette commande va reprendre les informations enregistrée dans les valeurs introduites plus tôt et les intégrer à la commande de création de l'utilisateur.
 # Elle va ensuite créer le compte, et ajouter deux paramètres. L'utilisateur va être autorisé à changer son mot de passe, mais celui donné plus tôt à une validité infinie dans le temps.
 
 New-ADUser -Name $nom -SamAccountName $login -UserPrincipalName $login@acme.fr -AccountPassword (ConvertTo-SecureString -AsPlainText Bonjour58! -Force) -PasswordNeverExpires $true -CannotChangePassword $false -Enabled $true
 
+# Cette commande va ajouter l'utilisateur au groupe renseigné
+Add-ADgroupmember -identity $group -members $login
+
 # Confirmation de l'inscription de l'utilisateur
-Write-Host "L'utilisateur fait desormais partie de votre domaine"
+Write-Host "L'utilisateur fait désormais partie de votre domaine et du groupe $group"
 
 # Cette commande va permettre de créer un dossier au nom de l'utilisateur dans un dossier partagé dédié
-New-Item -Path C:\Partage\$nom -ItemType Directory
+New-Item -Path C:\Partage\$login -ItemType Directory
