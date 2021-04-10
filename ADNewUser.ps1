@@ -16,7 +16,7 @@ $prenom = Read-host "Entrez le prénom de l'utilisateur"
 $nom = Read-Host "Entrez le nom de l'utilisateur"
 
 # Crée son nom d'utilisateur à partir du nom et prénom
-$login =$prenom.substring(0,1)+$nom
+$login = $prenom.substring(0,1)+$nom
 
 # Demande dans quel groupe l'utilisateur doit être inséré
 $group = read-host "Dans quel groupe souhaitez vous insérer le nouvel utilisateur ?"
