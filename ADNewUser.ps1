@@ -17,9 +17,6 @@ $nom = Read-Host "Entrez le nom et prénom de l'utilisateur"
 # Puis son identifiant
 $login = Read-Host "Entrez le nom d'utilisateur"
 
-# Et finalement son mot de passe
-$mdp = Read-Host "Entrez le mot de passe de l'utilisateur"
-
 # Cette commande va reprendre les informations enregistrée dans les valeurs introduites plus tôt et les intégrer à la commande de création de l'utilisateur.
 # Elle va ensuite créer le compte, et ajouter deux paramètres. L'utilisateur va être autorisé à changer son mot de passe, mais celui donné plus tôt à une validité infinie dans le temps.
 
