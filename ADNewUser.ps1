@@ -20,12 +20,12 @@ $login = Read-Host "Entrez le nom d'utilisateur"
 # Et finalement son mot de passe
 $mdp = Read-Host "Entrez le mot de passe de l'utilisateur"
 
-# Cette commande va reprendre les informations enregistrée dans les valeurs introduites plus tôt et les intégrer à la commande de création de l'utilisateur. 
+# Cette commande va reprendre les informations enregistrée dans les valeurs introduites plus tôt et les intégrer à la commande de création de l'utilisateur.
 # Elle va ensuite créer le compte, et ajouter deux paramètres. L'utilisateur va être autorisé à changer son mot de passe, mais celui donné plus tôt à une validité infinie dans le temps.
 
-New-ADUser -Name $nom -SamAccountName $login -UserPrincipalName $login@acme.fr -AccountPassword (ConvertTo-SecureString -AsPlainText $mdp -Force) -PasswordNeverExpires $true -CannotChangePassword $false -Enabled $true
+New-ADUser -Name $nom -SamAccountName $login -UserPrincipalName $login@acme.fr -AccountPassword (ConvertTo-SecureString -AsPlainText Bonjour58! -Force) -PasswordNeverExpires $true -CannotChangePassword $false -Enabled $true
 
-# Confirmation de l'inscription de l'utilisateur 
+# Confirmation de l'inscription de l'utilisateur
 Write-Host "L'utilisateur fait desormais partie de votre domaine"
 
 # Cette commande va permettre de créer un dossier au nom de l'utilisateur dans un dossier partagé dédié
