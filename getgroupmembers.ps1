@@ -5,3 +5,5 @@ $group = read-host "Entrez le nom du groupe dont vous souhaitez connaitre les ut
 
 # Cette commande va chercher les membres du groupe donné
 Get-ADgroupmember $group > utilisateurs$group.txt
+
+Read-Host "L'export du nom des utilisateurs du groupe $group est termine."
