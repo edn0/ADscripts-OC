@@ -16,10 +16,10 @@ Import-Module ActiveDirectory
 $prenom = Read-host "Entrez le prénom de l'utilisateur"
 $nom = Read-Host "Entrez le nom de l'utilisateur"
 
-# Crée son nom d'utilisateur à partir du nom et prénom
+# Crée son nom d'utilisateur à partir du nom et prénom en ne conservant que la première lettre du prénom, associé au nom de famille
 $login = $prenom.substring(0,1)+$nom
 
-# Demande dans quel groupe l'utilisateur doit être inséré
+# Demande dans quel groupe l'utilisateur doit-il être inséré
 $group = read-host "Dans quel groupe souhaitez vous insérer le nouvel utilisateur ?"
 
 # Cette commande va reprendre les informations enregistrée dans les valeurs introduites plus tôt et les intégrer à la commande de création de l'utilisateur.
@@ -31,7 +31,7 @@ New-ADUser -Name $prenom$nom -SamAccountName $login -UserPrincipalName $login@ac
 Add-ADgroupmember -identity $group -members $login
 
 # Confirmation de l'inscription de l'utilisateur
-Write-Host "L'utilisateur $login fait désormais partie de votre domaine et du groupe $group. Un dossier à son nom a été crée dans le dossier "Partage"."
+Write-Host "L'utilisateur $login fait désormais partie de votre domaine et du groupe $group. Un dossier à son nom a été crée dans le dossier Partage."
 
-# Cette commande va permettre de créer un dossier au nom de l'utilisateur dans un dossier partagé dédié
+# Cette commande va permettre de créer un dossier au nom de l'utilisateur dans un dossier partagé
 New-Item -Path C:\Partage\$login -ItemType Directory
