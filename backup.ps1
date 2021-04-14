@@ -2,4 +2,9 @@
 # version 0.1
 # Auteur : Corentin Blondiau
 
-Copy-item -path C:\Users\$env:UserName\Documents\ -Destination \\WYM\Sauvegarde\ -recurse
+# Cette commande va faire une copie complète des documents de tout les dossiers utilisateur vers le serveur
+Copy-item -path C:\Users\*\Documents\ -Destination \\WYM\Sauvegarde\ -recurse
+Copy-item -path C:\Users\*\Téléchargements\ -Destination \\WYM\Sauvegarde\ -recurse
+
+
+## usr/*/DOcuments + telechargements + images...
