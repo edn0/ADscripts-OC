@@ -8,7 +8,7 @@
 
 # Ceci va permettre d'assigner une valeur aux variables nom et prénom directement en appelant le script. Ces paramètres sont obligatoires.
 # Usage : ./ADNewUser.ps1 -prenom Bill -nom Boquet -group Inventions révolutionnaires
-param($prenom, $nom, $group)
+param([Parameter(mandatory=$true)] $prenom,[Parameter(mandatory=$true)] $nom, [Parameter(mandatory=$true)] $group)
 
 # Les commandes suivantes vont recueillir les informations essentielles à la création d'un nouvel utilisateur, puis les stocker dans des valeurs
 
