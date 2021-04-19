@@ -2,4 +2,5 @@
 # version 0.1
 # Auteur : Corentin Blondiau
 
-Copy-item -path C:\Users\$env:UserName\Documents\ -Destination \\WYM\Sauvegarde\ -recurse
+Copy-item -path C:\Users\$env:UserName\Documents\ -Destination \\WVM\Sauvegardes\$env:UserName\ -recurse
+
