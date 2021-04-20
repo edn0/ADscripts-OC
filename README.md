@@ -11,3 +11,5 @@ Ces scripts ont pour projet d'automatiser les tâches les plus courantes pour un
 **usergrouplist** permet de lister les groupes dont fait partie un utilisateur.
 
 **getgroupmembers** permet de lister les utilisateurs d'un groupe donné.
+
+**backup** permet de faire une sauvegarde du dossier "Documents" des utilisateurs du domaine s'étant connecté sur le poste depuis lequel le script est lancé.

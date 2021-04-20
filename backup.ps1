@@ -1,11 +1,13 @@
 # Ce script à pour but de faire une sauvegarde quotidienne des données de chaque poste client dans un dossier partagé sur le serveur
 # Le dossier contenant les vidéos ne sera pas backup par soucis de stockage
-# version 0.3
+# version 0.9
 # Auteur : Corentin Blondiau
 
+# Cette commande va récupérer les noms d'utilisateurs dans un fichier texte afin d'avoir tout les noms à disposition.
+## sugg : ajouter une commande pour pull de nouveau les username, l'exporter dans ce même usr.txt afin de toujours avoir les noms à jour
 foreach ($username in Get-Content \\WVM\Partage\usr.txt){
 
-# Cette commande va définir le chemin
+# Cette commande va définir le chemin du dossier à copier, puis sa destination
 $src = "C:\Users\" + $username + "\Documents\"
 $Destination = "\\WVM\Sauvegardes\$username\"
 
