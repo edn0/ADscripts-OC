@@ -9,6 +9,7 @@ foreach ($username in Get-Content \\WVM\Partage\usr.txt){
 $src = "C:\Users\" + $username + "\Documents\"
 $Destination = "\\WVM\Sauvegardes\$username\"
 
-# Cette commande va faire une copie complête des documents de tout les dossiers utilisateur vers le serveur
+# Cette commande va faire une copie complête des documents de tout les dossiers utilisateur vers le serveur.
+# Il est nécessaire d'exclure desktop.ini pour que la copie des dossiers système tels que Documents soit bien enregistré au nom de l'utilisateur dans la destination. Autrement le dossier était appelé "Documents" seulement. Problème connu de robocopy lorsque l'on fait une copie des dossiers système utilisateur.
 robocopy $src $Destination /MIR /w:0 /r:0 /XF desktop.ini
 }
