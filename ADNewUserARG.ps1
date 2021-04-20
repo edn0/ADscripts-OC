@@ -2,7 +2,7 @@
 
 # Ceci est un script ayant pour but de créer des utilisateurs Active Directory à partir des informations qui lui seront données.
 # Le script peut prendre les informations en ligne de commande, ou de manière interactive.
-# Le script va créer un utilisateur avec le prénom et nom complet, et son nom d'utilisateur sera la première lettre de son prénom suivi de son nom de famille complet.
+# Le script va cr�er un utilisateur avec le prénom et nom complet, et son nom d'utilisateur sera la première lettre de son prénom suivi de son nom de famille complet.
 # version 1.0
 # Auteur : Corentin Blondiau
 
