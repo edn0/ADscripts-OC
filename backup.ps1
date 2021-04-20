@@ -3,7 +3,12 @@
 # version 0.3
 # Auteur : Corentin Blondiau
 
-# Cette commande va faire une copie complète des documents de tout les dossiers utilisateur vers le serveur
-Copy-item -path C:\Users\*\Documents\ -Destination \\WYM\Sauvegarde\ -recurse
-Copy-item -path C:\Users\*\Téléchargements\ -Destination \\WYM\Sauvegarde\ -recurse
-Copy-item -path C:\Users\*\Images\ -Destionation \\WYM\Sauvegarde\ -recurse
+foreach ($username in Get-Content \\WVM\Partage\usr.txt){
+
+# Cette commande va définir le chemin
+$src = "C:\Users\" + $username + "\Documents\"
+$Destination = "\\WVM\Sauvegardes\$username\"
+
+# Cette commande va faire une copie complête des documents de tout les dossiers utilisateur vers le serveur
+robocopy $src $Destination /MIR /w:0 /r:0 /XF desktop.ini
+}
