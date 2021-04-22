@@ -1,6 +1,6 @@
 # Ce script à pour but de faire une sauvegarde quotidienne des données de chaque poste client dans un dossier partagé sur le serveur
 # Le dossier contenant les vidéos ne sera pas backup par soucis de stockage
-# version 0.9
+# version 1.0
 # Auteur : Corentin Blondiau
 
 # Cette commande va récupérer les noms d'utilisateurs dans un fichier texte afin d'avoir tout les noms à disposition.
