@@ -10,4 +10,4 @@ Ces scripts ont pour projet d'automatiser les tâches les plus courantes pour un
 
 **getgroupmembers** permet de lister les utilisateurs d'un groupe donné.
 
-**backup** permet de faire une sauvegarde du dossier "Documents" des utilisateurs du domaine s'étant connecté sur le poste depuis lequel le script est lancé.
+**backup** permet de faire une sauvegarde du dossier "Documents" des utilisateurs du domaine s'étant connecté sur le poste depuis lequel le script est lancé. Il est assisté par **backup.bat** qui lui va appeler le script de sauvegarde, après avoir été lui-même appelé par une tâche planifiée pour une sauvegarde quotidienne.
