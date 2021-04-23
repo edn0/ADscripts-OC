@@ -12,18 +12,19 @@ param([Parameter(mandatory=$true)] $prenom,[Parameter(mandatory=$true)] $nom, [P
 
 # Cette fonction va s'assurer que les champs aient été remplis, autrement il sera demandé à l'utilisateur de les fournir
 function usrprompt {
-if ($prenom -eq ""){
-$prenom = Read-host "Entrez le prénom de l'utilisateur"
+    if ($prenom -eq ""){
+        $prenom = Read-host "Entrez le prénom de l'utilisateur"
 }
-if($nom -eq ""){
-$nom = Read-Host "Entrez le nom de l'utilisateur"
+    if($nom -eq ""){
+        $nom = Read-Host "Entrez le nom de l'utilisateur"
 }
-if($group -eq ""){
-$group = read-host "Dans quel groupe souhaitez vous insérer le nouvel utilisateur ?"
-}
+    if($group -eq ""){
+        $group = read-host "Dans quel groupe souhaitez vous ins�rer le nouvel utilisateur ?"
+} 
 }
 
-# Créé son nom d'utilisateur à partir du nom et prénom en ne conservant que la première lettre du prénom, associé au nom de famille
+
+# Cr�e son nom d'utilisateur � partir du nom et pr�nom en ne conservant que la premi�re lettre du pr�nom, associ� au nom de famille
 $login = $prenom.substring(0,1)+$nom
 
 # Cette commande va reprendre les informations enregistrée dans les valeurs introduites plus tôt et les intégrer à la commande de création de l'utilisateur.
@@ -31,11 +32,11 @@ $login = $prenom.substring(0,1)+$nom
 
 New-ADUser -Name $prenom$nom -SamAccountName $login -UserPrincipalName $login@acme.fr -AccountPassword (ConvertTo-SecureString -AsPlainText Bonjour58! -Force) -PasswordNeverExpires $true -CannotChangePassword $false -Enabled $true
 
-# Cette commande va ajouter l'utilisateur au groupe renseigné
+# Cette commande va ajouter l'utilisateur au groupe renseign�
 Add-ADgroupmember -identity $group -members $login
 
 # Confirmation de l'inscription de l'utilisateur
-Write-Host "L'utilisateur $login fait désormais partie de votre domaine et du groupe $group. Un dossier à son nom a été créé dans le dossier \\WVM\Partage\Personnel."
+Write-Host "L'utilisateur $login fait d�sormais partie de votre domaine et du groupe $group. Un dossier à son nom a été créé dans le dossier \\WVM\Partage\Personnel."
 
 # Cette commande va permettre de créer un dossier au nom de l'utilisateur dans un dossier partagé
 New-Item -Path C:\Partage\Personnel\$login -ItemType Directory
