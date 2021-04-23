@@ -2,13 +2,26 @@
 
 # Ceci est un script ayant pour but de créer des utilisateurs Active Directory à partir des informations qui lui seront données.
 # Le script peut prendre les informations en ligne de commande, ou de manière interactive.
-# Le script va cr�er un utilisateur avec le prénom et nom complet, et son nom d'utilisateur sera la première lettre de son prénom suivi de son nom de famille complet.
+# Le script va créer un utilisateur avec le prénom et nom complet, et son nom d'utilisateur sera la première lettre de son prénom suivi de son nom de famille complet.
 # version 1.0
 # Auteur : Corentin Blondiau
 
 # Ceci va permettre d'assigner une valeur aux variables nom et prénom directement en appelant le script. Ces paramètres sont obligatoires.
 # Usage : ./ADNewUser.ps1 -prenom Bill -nom Boquet -group Inventions révolutionnaires
 param([Parameter(mandatory=$true)] $prenom,[Parameter(mandatory=$true)] $nom, [Parameter(mandatory=$true)] $group)
+
+# Cette fonction va s'assurer que les champs aient été remplis, autrement il sera demandé à l'utilisateur de les fournir
+function usrprompt {
+if ($prenom -eq ""){
+$prenom = Read-host "Entrez le prénom de l'utilisateur"
+}
+if($nom -eq ""){
+$nom = Read-Host "Entrez le nom de l'utilisateur"
+}
+if($group -eq ""){
+$group = read-host "Dans quel groupe souhaitez vous insérer le nouvel utilisateur ?"
+}
+}
 
 # Créé son nom d'utilisateur à partir du nom et prénom en ne conservant que la première lettre du prénom, associé au nom de famille
 $login = $prenom.substring(0,1)+$nom
