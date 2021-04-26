@@ -20,11 +20,11 @@ function usrprompt {
 }
     if($group -eq ""){
         $group = read-host "Dans quel groupe souhaitez vous ins�rer le nouvel utilisateur ?"
-} 
+}
 }
 
 
-# Cr�e son nom d'utilisateur � partir du nom et pr�nom en ne conservant que la premi�re lettre du pr�nom, associ� au nom de famille
+# Crée son nom d'utilisateur à partir du nom et prénom en ne conservant que la première lettre du prénom, associé au nom de famille
 $login = $prenom.substring(0,1)+$nom
 
 # Cette commande va reprendre les informations enregistrée dans les valeurs introduites plus tôt et les intégrer à la commande de création de l'utilisateur.
