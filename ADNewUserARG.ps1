@@ -3,26 +3,14 @@
 # Ceci est un script ayant pour but de créer des utilisateurs Active Directory à partir des informations qui lui seront données.
 # Le script peut prendre les informations en ligne de commande, ou de manière interactive.
 # Le script va créer un utilisateur avec le prénom et nom complet, et son nom d'utilisateur sera la première lettre de son prénom suivi de son nom de famille complet.
-# version 1.0
+# version 1.1
 # Auteur : Corentin Blondiau
 
 # Ceci va permettre d'assigner une valeur aux variables nom et prénom directement en appelant le script. Ces paramètres sont obligatoires.
 # Usage : ./ADNewUser.ps1 -prenom Bill -nom Boquet -group Inventions révolutionnaires
-param([Parameter(mandatory=$true)] $prenom,[Parameter(mandatory=$true)] $nom, [Parameter(mandatory=$true)] $group)
-
-# Cette fonction va s'assurer que les champs aient été remplis, autrement il sera demandé à l'utilisateur de les fournir
-function usrprompt {
-    if ($prenom -eq ""){
-        $prenom = Read-host "Entrez le prénom de l'utilisateur"
-}
-    if($nom -eq ""){
-        $nom = Read-Host "Entrez le nom de l'utilisateur"
-}
-    if($group -eq ""){
-        $group = read-host "Dans quel groupe souhaitez vous ins�rer le nouvel utilisateur ?"
-}
-}
-
+param([Parameter(mandatory=$true)]$prenom,[Parameter(mandatory=$true)] $nom,[Parameter(mandatory=$true)] $group)
+# param([parameter(valuefrompipeline=$true)] $prenom,[Parameter(valuefrompipeline=$true)] $nom,[Parameter(valuefrompipeline=$true)] $group)
+# param($prenom, $nom, $group
 
 # Crée son nom d'utilisateur à partir du nom et prénom en ne conservant que la première lettre du prénom, associé au nom de famille
 $login = $prenom.substring(0,1)+$nom
@@ -32,11 +20,11 @@ $login = $prenom.substring(0,1)+$nom
 
 New-ADUser -Name $prenom$nom -SamAccountName $login -UserPrincipalName $login@acme.fr -AccountPassword (ConvertTo-SecureString -AsPlainText Bonjour58! -Force) -PasswordNeverExpires $true -CannotChangePassword $false -Enabled $true
 
-# Cette commande va ajouter l'utilisateur au groupe renseign�
+# Cette commande va ajouter l'utilisateur au groupe renseigné
 Add-ADgroupmember -identity $group -members $login
 
 # Confirmation de l'inscription de l'utilisateur
-Write-Host "L'utilisateur $login fait d�sormais partie de votre domaine et du groupe $group. Un dossier à son nom a été créé dans le dossier \\WVM\Partage\Personnel."
+Write-Host "L'utilisateur $login fait désormais partie de votre domaine et du groupe $group. Un dossier à son nom a été créé dans le dossier \\WVM\Partage\Personnel."
 
 # Cette commande va permettre de créer un dossier au nom de l'utilisateur dans un dossier partagé
 New-Item -Path C:\Partage\Personnel\$login -ItemType Directory
