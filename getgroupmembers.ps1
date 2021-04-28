@@ -1,17 +1,10 @@
-# Ce script a pour but de lister les utilisateurs d'un groupe
+# Ce script a pour but de lister les utilisateurs d'un groupe et d'exporter cette liste
 # version 1.1
 # Auteur : Corentin Blondiau
+# Utilisation : ./getgroupmembers.ps1 -group "nom du groupe"
 
-param([string]$group)
-
-function check {
-    if ($group -eq ""){
-    $group = Read-host "Entrez le nom du groupe dont vous souhaitez connaitre les membres"
-}
-}
-
-# Cette commande va permettre d'obtenir auprès de l'utilisateur le nom du groupe dont il souhaite connaitre les membres
-$group = read-host "Entrez le nom du groupe dont vous souhaitez connaitre les utilisateurs"
+# Ici je crée le paramètre "group"
+param([Parameter(mandatory=$true)][string]$group)
 
 # Cette commande va chercher les membres du groupe donné
 Get-ADgroupmember $group | select name > utilisateurs$group.txt
