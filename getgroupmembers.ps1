@@ -1,5 +1,5 @@
 # Ce script a pour but de lister les utilisateurs d'un groupe et d'exporter cette liste
-# version 1.1
+# version 1.2
 # Auteur : Corentin Blondiau
 # Utilisation : ./getgroupmembers.ps1 -group "nom du groupe"
 
