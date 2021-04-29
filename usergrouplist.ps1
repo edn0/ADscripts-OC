@@ -1,4 +1,6 @@
 # Ce script à pour but de lister les groupes dont fait partie un utilisateur.
+# version 1.0
+# Auteur : Corentin Blondiau
 
 # Création du paramètre nom et je le rends obligatoire
 param([Parameter(mandatory=$true)][string]$nomutilisateur)
