@@ -1,5 +1,8 @@
 # Ce script à pour but de lister les groupes dont fait partie un utilisateur.
 
+# Création du paramètre nom et je le rends obligatoire
+param([Parameter(mandatory=$true)][string]$nom)
+
 # Cette commande va demander à l'utilisateur le nom de la personne dont il souhaite connaitre les groupes
 $nom = Read-host "Entrez le nom de l'utilisateur"
 
