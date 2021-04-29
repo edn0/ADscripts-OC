@@ -1,5 +1,9 @@
 # Ce script va permettre de créer des groupes au sein de l'AD en demandant à l'utilisateur d'entrer le nom du groupe à créer, le nombre d'utilisateurs à ajouter et quels sont ces utilisateurs
+# version 1.2
+# Auteur : Corentin Blondiau
 
+# Définition des paramètres mandatoires
+param([Parameter(mandatory=$true)][string]$groupe), param([Parameter(mandatory=$true)][string]$nombre)
 
 # Cette commande va demander le nom du groupe à créer
 $groupe = read-host "Entrez le nom du groupe"
