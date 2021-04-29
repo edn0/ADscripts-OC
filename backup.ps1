@@ -23,5 +23,5 @@ New-Item -item-type directory -force -path $destination
 
 # Cette commande va faire une copie complête des documents de tout les dossiers utilisateur vers le serveur.
 # Il est nécessaire d'exclure desktop.ini avec /XF pour que la copie du dossier Documents soit bien enregistrée au nom de l'utilisateur dans la destination. Autrement le dossier était appelé "Documents" avec l'icône du dossier personnel Documents. Problème connu de robocopy lorsque l'on fait une copie des dossiers personnels utilisateur.
-robocopy $src $Destination -force /MIR /w:0 /r:0 /XF desktop.ini
+robocopy $src $Destination /MIR /w:0 /r:0 /XF desktop.ini
 }
