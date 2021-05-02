@@ -13,7 +13,7 @@ $username = $_.name
 $machine = $env:COMPUTERNAME
 $Destination = "\\WVM\Sauvegardes\$username\$machine"
 # Je teste si le chemin existe, si non, je vais forcer sa création
-if(!(test-path $destination)){
+if(!(test-path $Destination)){
 New-Item -item-type directory -force -path $destination
 }
 
@@ -22,12 +22,12 @@ New-Item -item-type directory -force -path $destination
 robocopy $src $Destination /MIR /w:0 /r:0 /XF desktop.ini
 
 #Le script récupère les autorisasions sur le dossier et supprime toutes les autorisations héritées
-$acl = Get-Acl $destination
+$acl = Get-Acl $Destination
 $acl.SetAccessRuleProtection($true,$false)
 $acl | Set-Acl
 
 # Définition des règles de permission
-$usraccess = New-Object System.Security.AccessControl.FileSystemAccessRule("$_.FullName","FullControl","ContainerInherit, ObjectInherit", "None","Allow")
+$usraccess = New-Object System.Security.AccessControl.FileSystemAccessRule("$username","FullControl","ContainerInherit, ObjectInherit", "None","Allow")
 $adminaccess = New-Object System.Security.AccessControl.FileSystemAccessRule("Administrateur","FullControl","ContainerInherit, ObjectInherit", "None","Allow")
 # Ajout des droits de contrôle total pour l'utilisateur et l'administrateur
 $acl.SetAccessRule($usraccess)
