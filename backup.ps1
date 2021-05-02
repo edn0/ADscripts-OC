@@ -27,7 +27,7 @@ $acl.SetAccessRuleProtection($true,$false)
 $acl | Set-Acl
 
 # Définition des règles de permission
-$usraccess = New-Object System.Security.AccessControl.FileSystemAccessRule("$username","FullControl","ContainerInherit, ObjectInherit", "None","Allow")
+$usraccess = New-Object System.Security.AccessControl.FileSystemAccessRule("$_.FullName","FullControl","ContainerInherit, ObjectInherit", "None","Allow")
 $adminaccess = New-Object System.Security.AccessControl.FileSystemAccessRule("Administrateur","FullControl","ContainerInherit, ObjectInherit", "None","Allow")
 # Ajout des droits de contrôle total pour l'utilisateur et l'administrateur
 $acl.SetAccessRule($usraccess)
