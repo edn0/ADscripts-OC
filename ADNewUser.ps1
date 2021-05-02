@@ -21,6 +21,11 @@ Add-ADgroupmember -identity $group -members $login
 # Cette commande va permettre de créer un dossier au nom de l'utilisateur dans un dossier partagé
 New-Item -Path C:\Partage\Personnel\$login -ItemType Directory
 
+ #Le script récupère les autorisasions sur le dossier et supprime toutes les autorisations héritées
+$acl = Get-Acl C:\Partage\Personnel\$login
+$acl.SetAccessRuleProtection($true,$false)
+$acl | Set-Acl
+
 # Définition des règles de permission
 $usraccess = New-Object System.Security.AccessControl.FileSystemAccessRule("$login","FullControl","ContainerInherit, ObjectInherit", "None","Allow")
 $adminaccess = New-Object System.Security.AccessControl.FileSystemAccessRule("Administrateur","FullControl","ContainerInherit, ObjectInherit", "None","Allow")
