@@ -20,4 +20,17 @@ New-Item -item-type directory -force -path $destination
 # Cette commande va faire une copie complête des documents de tout les dossiers utilisateur vers le serveur.
 # Il est nécessaire d'exclure desktop.ini avec /XF pour que la copie du dossier Documents soit bien enregistrée au nom de l'utilisateur dans la destination. Autrement le dossier était appelé "Documents" avec l'icône du dossier personnel Documents. Problème connu de robocopy lorsque l'on fait une copie des dossiers personnels utilisateur.
 robocopy $src $Destination /MIR /w:0 /r:0 /XF desktop.ini
+
+#Le script récupère les autorisasions sur le dossier et supprime toutes les autorisations héritées
+$acl = Get-Acl $destination
+$acl.SetAccessRuleProtection($true,$false)
+$acl | Set-Acl
+
+# Définition des règles de permission
+$usraccess = New-Object System.Security.AccessControl.FileSystemAccessRule("$username","FullControl","ContainerInherit, ObjectInherit", "None","Allow")
+$adminaccess = New-Object System.Security.AccessControl.FileSystemAccessRule("Administrateur","FullControl","ContainerInherit, ObjectInherit", "None","Allow")
+# Ajout des droits de contrôle total pour l'utilisateur et l'administrateur
+$acl.SetAccessRule($usraccess)
+$acl.SetAccessRule($adminaccess)
+$acl | Set-Acl
 }
